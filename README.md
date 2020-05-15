@@ -3,8 +3,8 @@ This model is basically written by FORTRAN 90. It can compute the CO2 thermodyna
 
 
 ---
-### 1. Code organisation
-### 2. How to use
+### - ***Code organisation***
+### - ***How to use***
 ---
 
 ## 1. Code organisation
