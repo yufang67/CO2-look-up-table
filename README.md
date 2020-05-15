@@ -5,8 +5,6 @@ This model is basically written by FORTRAN 90. It can compute the CO2 thermodyna
 ---
 ### 1. Code organisation
 ### 2. How to use
-### 3. Tips
-### 4. Acknowledgement
 ---
 
 ## 1. Code organisation
@@ -43,7 +41,20 @@ This model is basically written by FORTRAN 90. It can compute the CO2 thermodyna
 - ***Test/evaluation cases***:
   - program/
   
+  ---
+  ## 2. How to use
+  - Compliler: gfortran, lapack library, openblas library (***different version can lead divergence in some points during grid construction. To fix it, need adapt initial guess. you can find clue in grid construction model***)
+  - Test cases are in ***program*** file.
+  - To couple to OpenFoam (C++ based) solver:
+    - compile .f90 using Makefile ("make")
+    - create .a library ("ar rc libco2lib.a *.o")
+    - check library ("nm libco2lib.a")
+    - compile .a library with OpenFOAM solver (setup Make/option in OpenFOAM solver)
   
-  
-  
-  
+  -  ***Main Modul***:
+    - Grid.f90 : construct table
+    - Interp_table.f90 : use table to compute properties
+    - Properties.f90 : use original SW EoS to compute properties
+    - Transprop.f90 : compute transport properties
+    - Derivees.f90 : compute derivatives of thermal variables
+ 
